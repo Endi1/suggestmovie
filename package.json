@@ -9,6 +9,7 @@
   "author": "Endi Sukaj",
   "license": "ISC",
   "devDependencies": {
+    "jquery": "^2.1.4",
     "react": "^0.14.2"
   },
   "dependencies": {
