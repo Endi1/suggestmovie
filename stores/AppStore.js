@@ -8,13 +8,15 @@ var CHANGE_EVENT = 'change';
 var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 
-var movie= {};
+var movie;
 
 
 
 function discoverMovies(genresString) {
   $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&vote_count.gte=100&with_genres='+genresString, function(data) {
-    console.log(data);
+    movie = data.results[0];
+  }).done(function() {
+    AppStore.emitChange();
   });
 }
 
@@ -32,13 +34,11 @@ var AppStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-  console.log('registered');
   var genresString;
   switch(action.actionType) {
     case 'discover':
     genresString = action.genresString;
     discoverMovies(genresString);
-    AppStore.emitChange();
     break;
   }
   return true;

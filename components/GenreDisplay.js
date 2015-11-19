@@ -1,9 +1,11 @@
 'use strict';
 var React = require('react');
 var Checkbox = require('material-ui').Checkbox;
+var Link = require('react-router').Link;
 var $ = require('jquery');
 var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
+
 
 var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
@@ -11,7 +13,7 @@ var RaisedButton = require('material-ui').RaisedButton;
 
 var GenreDisplay = React.createClass({
   storeChanged: function() {
-    console.log('store changed');
+    location.href += '1';
   },
   componentDidMount: function() {
     AppStore.on('change', this.storeChanged);
