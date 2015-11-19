@@ -23,6 +23,7 @@
 - Utilities
 - Clearing
 - Media Queries
+- Header
 */
 
 
@@ -125,7 +126,8 @@ body {
   line-height: 1.6;
   font-weight: 300;
   font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222; 
+  color: #0b3536;
+  background-color: #e5e7de;
 }
 
 
@@ -417,3 +419,41 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/*
+This is the part for the header
+*/
+
+.header {
+  width: 100%;
+  height: 5rem;
+  background-color: #f54123;
+}
+.header h1 {
+  margin: 0;
+  padding: 0.6rem;
+  display: inline-block;
+}
+.header h3{
+  color: #e5e7de;
+  display: inline-block;
+  font-size: 2rem;
+  padding: 0.6rem;
+
+}
+.header .left-side {
+    display: inline-block;
+    margin-left: 70%;
+}
+.header .left-side h3{
+}
+
+
+
+/*
+This is misc
+*/
+
+.next-button {
+  margin-top: 12rem;
+}

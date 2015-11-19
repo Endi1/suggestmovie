@@ -9,9 +9,12 @@
   "author": "Endi Sukaj",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "events": "^1.1.0",
     "history": "^1.13.1",
     "jquery": "^2.1.4",
     "material-ui": "^0.13.3",
+    "object-assign": "^4.0.1",
     "react": "^0.14.2",
     "react-router": "^1.0.0"
   },

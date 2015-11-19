@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream')
+var browserSync = require('browser-sync').create();
 
 
 gulp.task('default', function() {
@@ -11,6 +12,15 @@ gulp.task('default', function() {
 
 });
 
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: './'
+    }
+  });
+  gulp.watch(['./static/js/app.js', './static/css/*.css']).on('change', browserSync.reload);
+});
 
 gulp.task('browserify', function() {
   var b = browserify({
