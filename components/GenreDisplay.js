@@ -13,7 +13,10 @@ var RaisedButton = require('material-ui').RaisedButton;
 
 var GenreDisplay = React.createClass({
   storeChanged: function() {
-    location.href += '1';
+    // doing this because it would otherwise add a 1 when the MovieDisplay is being re-rendered
+    if(location.href.slice(-3) === '/#/') {
+      location.href += '1';
+    }
   },
   componentDidMount: function() {
     AppStore.on('change', this.storeChanged);
@@ -21,9 +24,16 @@ var GenreDisplay = React.createClass({
   clickedButton: function() {
     var genres = this.state.checked;
     var genresString = '';
-    var i;
-    for(i=0; i<genres.length; i++) {
-      genresString += genres[i] + '|';
+    var i, l = genres.length;
+    // we use AND instead of OR if we have less than 4 genres selected;
+    if(l <= 3) {
+      for(i=0; i<l; i++) {
+        genresString += genres[i] + ',';
+      }
+    } else {
+      for(i=0; i<l; i++) {
+        genresString += genres[i] + '|';
+      }
     }
     AppActions.discover(genresString);
   },

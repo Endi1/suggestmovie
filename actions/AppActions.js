@@ -8,6 +8,26 @@ var AppActions = {
       actionType: 'discover',
       genresString: genresString
     });
+  },
+
+  suggestSimilar: function(movie) {
+    AppDispatcher.dispatch({
+      actionType: 'suggest-similar',
+      movie: movie
+    });
+  },
+
+  suggestDifferent: function(movie) {
+    AppDispatcher.dispatch({
+      actionType: 'suggest-different',
+      movie: movie
+    });
+  },
+
+  reload: function() {
+    AppDispatcher.dispatch({
+      actionType: 'reload'
+    });
   }
 
 

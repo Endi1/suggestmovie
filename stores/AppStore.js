@@ -9,16 +9,38 @@ var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 
 var movie;
+var movies;
 
-
+function reloadMovies() {
+  console.log('reloading');
+  var i = Math.floor(Math.random() * 19);
+  movie = movies.results[i];
+  AppStore.emitChange();
+}
 
 function discoverMovies(genresString) {
+  console.log('run');
+  var i = Math.floor(Math.random() * 19);
   $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&vote_count.gte=100&with_genres='+genresString, function(data) {
-    movie = data.results[0];
+    movies = data;
+    movie = data.results[i];
   }).done(function() {
     AppStore.emitChange();
   });
 }
+
+function suggestSimilar(m) {
+  console.log('ss');
+  var id = m.id;
+  var i = Math.floor(Math.random() * 19);
+  $.get('https://api.themoviedb.org/3/movie/' + id + '/similar?api_key=' + KEY +'&append_to_response=top_rated', function(data) {
+    movie = data.results[i];
+    console.log(movie);
+  }).done(function() {
+    AppStore.emitChange();
+  });
+}
+
 
 
 var AppStore = assign({}, EventEmitter.prototype, {
@@ -39,6 +61,16 @@ AppDispatcher.register(function(action) {
     case 'discover':
     genresString = action.genresString;
     discoverMovies(genresString);
+    break;
+    case 'suggest-similar':
+    movie = action.movie;
+    suggestSimilar(movie);
+    break;
+    case 'suggest-different':
+    movie = action.movie;
+    break;
+    case 'reload':
+    reloadMovies();
     break;
   }
   return true;

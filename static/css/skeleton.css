@@ -457,3 +457,9 @@ This is misc
 .next-button {
   margin-top: 12rem;
 }
+
+.poster-img {
+  width: 60%;
+  display: block;
+  margin: auto;
+}
