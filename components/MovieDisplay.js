@@ -30,7 +30,9 @@ var MovieDisplay = React.createClass({
   },
   storeChanged: function() {
     var movie = AppStore.getMovie();
-    this.setState({movie: movie});
+    if(this.isMounted()){
+      this.setState({movie: movie});
+    }
   },
   componentDidMount: function() {
     var movie = AppStore.getMovie();

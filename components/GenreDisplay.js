@@ -67,6 +67,7 @@ var GenreDisplay = React.createClass({
     for(i=0; i<l; i++) {
       genreGroups[i%4].push(<Checkbox
                   name={this.props.genres[i].name}
+                  key={this.props.genres[i].id}
                   value={this.props.genres[i].id}
                   label={this.props.genres[i].name}
                   onCheck={this.onCheck}/>);
