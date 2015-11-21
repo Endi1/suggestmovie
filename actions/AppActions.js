@@ -17,13 +17,6 @@ var AppActions = {
     });
   },
 
-  suggestDifferent: function(movie) {
-    AppDispatcher.dispatch({
-      actionType: 'suggest-different',
-      movie: movie
-    });
-  },
-
   reload: function() {
     AppDispatcher.dispatch({
       actionType: 'reload'

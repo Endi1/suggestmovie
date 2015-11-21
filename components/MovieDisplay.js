@@ -21,7 +21,8 @@ var MovieDisplay = React.createClass({
         AppActions.suggestSimilar(this.state.movie);
       }
     } else {
-      AppActions.suggestDifferent(this.state.movie);
+      // Load movies based on the genres, this happens when "different" is clicked
+      AppActions.reload();
     }
   },
   getInitialState: function() {
@@ -40,20 +41,25 @@ var MovieDisplay = React.createClass({
     return(
       <div>
         <div className="row">
-          <div className="twelve columns">
-            <div className="six columns offset-by-three">
-              <h1>{this.state.movie.title}</h1>
-              <img className="poster-img" src={imgURL+this.state.movie.poster_path} />
-              <h5>Description</h5>
-              <p>{this.state.movie.overview}</p>
-              <div className="three columns">
-                <RaisedButton primary={true} ref="differentButton" label="Different" onClick={this.handleClick.bind(this, 'd')}/>
-              </div>
-              <div className="three columns offset-by-six">
-                <RaisedButton secondary={true} ref="sameButton" label="Similar" onClick={this.handleClick.bind(this, 's')}/>
-              </div>
-            </div>
+          <div className="six columns offset-by-three">
+            <h1>{this.state.movie.title}</h1>
           </div>
+        </div>
+        <div className="row">
+          <div className="six columns">
+            <img className="poster-img" src={imgURL+this.state.movie.poster_path} />
+          </div>
+          <div className="six columns">
+            <p>{this.state.movie.overview}</p>
+          <div className="three columns">
+            <RaisedButton primary={true} ref="differentButton" label="Different" onClick={this.handleClick.bind(this, 'd')}/>
+          </div>
+          <div className="three columns offset-by-six">
+            <RaisedButton secondary={true} ref="sameButton" label="Similar" onClick={this.handleClick.bind(this, 's')}/>
+          </div>
+          </div>
+        </div>
+        <div className="row">
         </div>
       </div>
     );
