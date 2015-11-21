@@ -10,20 +10,8 @@ var RaisedButton = require('material-ui').RaisedButton;
 
 var MovieDisplay = React.createClass({
   counter: 0,
-  handleClick: function(button) {
-    if(button === 's'){
-      // the counter is used to keep a scope in search, otherwise clicking similar too many times loses the scope
-      this.counter ++;
-      if(this.counter === 3) {
-        AppActions.reload();
-        this.counter = 0;
-      } else {
-        AppActions.suggestSimilar(this.state.movie);
-      }
-    } else {
-      // Load movies based on the genres, this happens when "different" is clicked
-      AppActions.reload();
-    }
+  handleClick: function() {
+    AppActions.nextMovie(this.state.movie);
   },
   getInitialState: function() {
     return {movie: {}};
@@ -53,15 +41,10 @@ var MovieDisplay = React.createClass({
           </div>
           <div className="six columns">
             <p>{this.state.movie.overview}</p>
-          <div className="three columns">
-            <RaisedButton primary={true} ref="differentButton" label="Different" onClick={this.handleClick.bind(this, 'd')}/>
+            <div className="four columns offset-by-five">
+              <RaisedButton primary={true} ref="nextButton" label="Suggest another movie" onClick={this.handleClick}/>
+            </div>
           </div>
-          <div className="three columns offset-by-six">
-            <RaisedButton secondary={true} ref="sameButton" label="Similar" onClick={this.handleClick.bind(this, 's')}/>
-          </div>
-          </div>
-        </div>
-        <div className="row">
         </div>
       </div>
     );

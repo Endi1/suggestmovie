@@ -10,16 +10,10 @@ var AppActions = {
     });
   },
 
-  suggestSimilar: function(movie) {
+  nextMovie: function(movie) {
     AppDispatcher.dispatch({
-      actionType: 'suggest-similar',
+      actionType: 'next-movie',
       movie: movie
-    });
-  },
-
-  reload: function() {
-    AppDispatcher.dispatch({
-      actionType: 'reload'
     });
   }
 
