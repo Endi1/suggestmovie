@@ -8,8 +8,13 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
 
-  gulp.watch(['./app.js', './stores/*.js', './components/*.js', './actions/*.js'], ['browserify']);
+  gulp.start('serve','watch');
 
+});
+
+gulp.task('watch', function() {
+  gulp.watch(['./app.js', './stores/*.js', './components/*.js', './actions/*.js'], ['browserify']);
+  gulp.watch(['./static/js/app.js', './static/css/*.css'], ['reload']);
 });
 
 
@@ -19,7 +24,10 @@ gulp.task('serve', function() {
       baseDir: './'
     }
   });
-  gulp.watch(['./static/js/app.js', './static/css/*.css']).on('change', browserSync.reload);
+});
+
+gulp.task('reload', function(){
+  browserSync.reload();
 });
 
 gulp.task('browserify', function() {
