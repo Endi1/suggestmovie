@@ -10,6 +10,7 @@ var AppStore = require('../stores/AppStore');
 var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 var RaisedButton = require('material-ui').RaisedButton;
+var FlatButton = require('material-ui').FlatButton;
 
 var GenreDisplay = React.createClass({
   storeChanged: function() {
@@ -74,27 +75,31 @@ var GenreDisplay = React.createClass({
     }
     return(
       <div>
-        <div className="row">
-          <div className="twelve columns">
-            <h1>Please select your favourite genre(s)</h1>
-          </div>
+        <div className="banner-wrapper">
         </div>
-        <div className="row">
-          <div className="three columns">
-            {genreGroups[0]}
+        <div className="container">
+          <div className="row">
+            <div className="twelve columns">
+              <h1>Please select your favourite genre(s).</h1>
+            </div>
           </div>
-          <div className="three columns">
-            {genreGroups[1]}
-          </div>
-          <div className="three columns">
-            {genreGroups[2]}
-          </div>
-          <div className="three columns">
-            {genreGroups[3]}
-          </div>
-          <div className="twelve columns">
-            <div className="two columns offset-by-five">
-              <div className="next-button"><RaisedButton ref="nextButton" label="Next" disabled={this.state.disabled} onClick={this.clickedButton} /></div>
+          <div className="row">
+            <div className="three columns">
+              {genreGroups[0]}
+            </div>
+            <div className="three columns">
+              {genreGroups[1]}
+            </div>
+            <div className="three columns">
+              {genreGroups[2]}
+            </div>
+            <div className="three columns">
+              {genreGroups[3]}
+            </div>
+            <div className="twelve columns">
+              <div className="two columns offset-by-five">
+                <div className="next-button"><RaisedButton ref="nextButton" label="Next" disabled={this.state.disabled} onClick={this.clickedButton} /></div>
+              </div>
             </div>
           </div>
         </div>

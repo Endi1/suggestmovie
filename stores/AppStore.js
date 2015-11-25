@@ -5,7 +5,7 @@ var assign = require('object-assign');
 var $ = require('jquery');
 
 var CHANGE_EVENT = 'change';
-var KEY = 'ecc3489111ee969a6d588ccf396ab85c';
+var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 
 var movie;
