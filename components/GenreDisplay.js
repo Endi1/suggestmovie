@@ -30,12 +30,13 @@ var GenreDisplay = React.createClass({
     if(l <= 3) {
       for(i=0; i<l; i++) {
         genresString += genres[i] + ',';
-      }
+      };
     } else {
       for(i=0; i<l; i++) {
         genresString += genres[i] + '|';
       }
     }
+    console.log(genresString);
     AppActions.discover(genresString);
   },
   getInitialState: function() {
