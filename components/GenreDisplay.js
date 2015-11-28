@@ -10,6 +10,7 @@ var AppStore = require('../stores/AppStore');
 var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 var RaisedButton = require('material-ui').RaisedButton;
+var FlatButton = require('material-ui').FlatButton;
 
 var GenreDisplay = React.createClass({
   storeChanged: function() {
@@ -29,12 +30,13 @@ var GenreDisplay = React.createClass({
     if(l <= 3) {
       for(i=0; i<l; i++) {
         genresString += genres[i] + ',';
-      }
+      };
     } else {
       for(i=0; i<l; i++) {
         genresString += genres[i] + '|';
       }
     }
+    console.log(genresString);
     AppActions.discover(genresString);
   },
   getInitialState: function() {
@@ -75,7 +77,6 @@ var GenreDisplay = React.createClass({
     return(
       <div>
         <div className="banner-wrapper">
-          <RaisedButton label="Get a movie suggestion" />
         </div>
         <div className="container">
           <div className="row">

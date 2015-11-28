@@ -5,12 +5,21 @@ var assign = require('object-assign');
 var $ = require('jquery');
 
 var CHANGE_EVENT = 'change';
-var KEY = 'ecc3489111ee969a6d588ccf396ab85c';
+var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 
 
 var movie;
 var movies = [];
 var counter = 0;
+
+
+// This is a helper function that adds the contents of the b array to the a array
+function extend(a, b) {
+  var i, l = b.length;
+  for(i = 0; i < l; i++) {
+    a.push(b[i]);
+  }
+}
 
 // This displays a random movie from the movies array, which has all the movies displayed according to genres chosen
 function reloadMovie() {
@@ -48,10 +57,11 @@ function discoverMovies(genresString) {
   // load two pages into the movies array
   $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&vote_count.gte=100&with_genres='+genresString, function(data) {
     movies = data.results;
-    movie = data.results[i];
   }).done(function() {
     $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&&page=2&vote_count.gte=100&with_genres='+genresString, function(data) {
-      movies.push(data.results);
+      extend(movies, data.results);
+      movie = movies[i];
+      console.log(movies);
     }).done(function() {
       AppStore.emitChange();
     });
