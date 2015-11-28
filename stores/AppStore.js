@@ -11,7 +11,7 @@ var KEY = 'ecc3489111ee969a6d588ccf196ab85c';
 var movie;
 var movies = [];
 var counter = 0;
-
+var genres;
 
 // This is a helper function that adds the contents of the b array to the a array
 function extend(a, b) {
@@ -32,10 +32,12 @@ function reloadMovie() {
   return;
 }
 
+// This is called when next movie button is pressed
 function nextMovie(m) {
   var id = m.id;
   var i = Math.floor(Math.random() * 19);
   $.get('https://api.themoviedb.org/3/movie/' + id + '/similar?api_key=' + KEY +'&append_to_response=top_rated', function(data) {
+    // if the counter is 3, chose a movie from the initial array otherwise chose a movie from the similar array
     if(counter === 3){
       counter = 0;
       reloadMovie();
@@ -88,6 +90,7 @@ AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case 'discover':
     genresString = action.genresString;
+    genres = action.genres;
     discoverMovies(genresString);
     break;
     case 'next-movie':

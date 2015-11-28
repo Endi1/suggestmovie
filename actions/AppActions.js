@@ -3,10 +3,11 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var AppActions = {
 
-  discover: function(genresString) {
+  discover: function(genresString, genres) {
     AppDispatcher.dispatch({
       actionType: 'discover',
-      genresString: genresString
+      genresString: genresString,
+      genres: genres
     });
   },
 

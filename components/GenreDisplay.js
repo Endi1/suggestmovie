@@ -36,8 +36,7 @@ var GenreDisplay = React.createClass({
         genresString += genres[i] + '|';
       }
     }
-    console.log(genresString);
-    AppActions.discover(genresString);
+    AppActions.discover(genresString, genres);
   },
   getInitialState: function() {
     return {checked: [], disabled: true};
@@ -76,7 +75,17 @@ var GenreDisplay = React.createClass({
     }
     return(
       <div>
+        <div className="header row">
+          <div className="sixteen columns">
+            <div className="six columns offset-by-four buttons">
+              <FlatButton label="Suggest movie" />
+              <FlatButton label="About" />
+              <FlatButton label="How it works" />
+            </div>
+          </div>
+        </div>
         <div className="banner-wrapper">
+
         </div>
         <div className="container">
           <div className="row">
