@@ -13,6 +13,16 @@ var RaisedButton = require('material-ui').RaisedButton;
 var FlatButton = require('material-ui').FlatButton;
 
 var GenreDisplay = React.createClass({
+  aboutClicked: function() {
+    location.href = location.href + 'about';
+  },
+  scrollDown: function() {
+    console.log('click');
+    var objDiv = document.getElementById("container");
+    objDiv.scrollIntoView({
+      behavior: 'smooth'
+    });
+  },
   storeChanged: function() {
     // doing this because it would otherwise add a 1 when the MovieDisplay is being re-rendered
     if(location.href.slice(-3) === '/#/') {
@@ -36,8 +46,7 @@ var GenreDisplay = React.createClass({
         genresString += genres[i] + '|';
       }
     }
-    console.log(genresString);
-    AppActions.discover(genresString);
+    AppActions.discover(genresString, genres);
   },
   getInitialState: function() {
     return {checked: [], disabled: true};
@@ -76,9 +85,23 @@ var GenreDisplay = React.createClass({
     }
     return(
       <div>
+
+        <div className="header row" id="header">
+          <div className="sixteen columns">
+
+            <div className="six columns offset-by-four buttons">
+              <FlatButton label="Suggest movie" onClick={this.scrollDown} />
+              <FlatButton label="About" onClick={this.aboutClicked}/>
+              <FlatButton label="How it works" />
+            </div>
+
+          </div>
+        </div>
+
         <div className="banner-wrapper">
         </div>
-        <div className="container">
+
+        <div className="container" id="container">
           <div className="row">
             <div className="twelve columns">
               <h1>Please select your favourite genre(s).</h1>

@@ -427,7 +427,7 @@ This is the part for the header
 .header {
   width: 100%;
   height: 5rem;
-  background-color: #f54123;
+  background-color: white;
 }
 .header h1 {
   margin: 0;
@@ -445,7 +445,9 @@ This is the part for the header
     display: inline-block;
     margin-left: 70%;
 }
-.header .left-side h3{
+
+.header .buttons {
+  padding-top: 0.4em;
 }
 
 
@@ -468,8 +470,8 @@ This is misc
   width: 100%;
   height: 40em;
   margin-bottom: 4em;
-
 }
+
 
 .banner-wrapper::before{
   content: "";
