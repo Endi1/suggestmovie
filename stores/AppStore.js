@@ -55,15 +55,14 @@ function nextMovie(m) {
 }
 
 function discoverMovies(genresString) {
-  var i = Math.floor(Math.random() * 39);
   // load two pages into the movies array
   $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&vote_count.gte=100&with_genres='+genresString, function(data) {
     movies = data.results;
   }).done(function() {
     $.get('https://api.themoviedb.org/3/discover/movie?api_key='+KEY+'&sort_by=vote_average.desc&language=en&&page=2&vote_count.gte=100&with_genres='+genresString, function(data) {
+      var i = Math.floor(Math.random() * movies.length);
       extend(movies, data.results);
       movie = movies[i];
-      console.log(movies);
     }).done(function() {
       AppStore.emitChange();
     });
