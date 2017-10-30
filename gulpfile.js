@@ -28,7 +28,7 @@ gulp.task('serve', function() {
 
 gulp.task('reload', function(){
   browserSync.reload();
-});
+})
 
 gulp.task('browserify', function() {
   var b = browserify({
